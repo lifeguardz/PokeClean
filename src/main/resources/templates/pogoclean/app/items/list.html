@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org"
+	layout:decorator="pogoclean/layouts/application">
+<title>PokeClean - CLEAN UP YOUR POK&Eacute;MONS</title>
+<body>
+	<div layout:fragment="content">
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px"></header>
+		<div class="w3-row-padding w3-margin-bottom">
+			<div th:if="${success}" th:text="${success}" class="w3-container w3-green w3-round"></div>
+			<div th:if="${error}" th:text="${error}" class="w3-container w3-red w3-round"></div>
+			<div class="w3">
+				<div class="w3-container w3-blue w3-text-white w3-padding-2">
+					<div class="w3-left">
+						<img class="icon icons8-Rucksack"
+							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEy0lEQVRoQ+2ZX2hbVRjAv3Pzr452TVBLmk1ZW+bmQ+ltHiZNBTt81xSkgrKZihoDQifqYMmD2UMzmYobiN0m2LRDwSI0+i52YDPcQ3JLQTdr14k2i9XRdi1bmj/3yLlpZpLmnnNudpNZ6H1qud/5vu93vnu+PycItvmDtrn/sAPwoCN4XxGIhpy4HMDlj1F1VrOGtkk7AOW7c3oiZjND4xAG6ANAYv49lhDAVBrWzx4fcC5rjVrdIpBKZ2Ekcl1C9xwvNY0BSz53u9hgNpa8YH12dQP47sdFuJ64Q3Z8BgAFJ6S1CDE+IDa5AXAQAHW1O3bBc0/v+X8CfDY5D+mMDGlYs0UkWCn20i2C1QxNyxaTAL7+jgcLcP4VR0n2+X5mTXHo2a4mrqyqJu8dS2hOKpoXxIOi9crCUslB1AvgUFuLrTsolUSOtSOaAaIh5+TstaS7WLFeAJ0H7BGXP9bPcrr4vSaA6WFRREiIz15LltjQEQAwlrt7A5LEC6ERwBlECN6vJQAAvO3yx87UBCAa6p4CQM/UEgBj/G1vIF7yiepWB6aHu5cRQtYaA6z0BuI23SNw+ZS4D2NhgSiuJQDRj5Dc1nNCusEDwX0GoiHRDSBMlgM8sT8FXZ3riq2Z2Ub4da6Bapcm33nAvrlW7nf5JaWKsx5ugOnh/AEmCn+e+wtycr6WeV6+BWZL3kx6AyD85cNUm2ryJqMABztalLUYw8neQCzIcl6JFo8QkSkcYPL3+p0N+PPmKmSyMrzx6i14ccisqPn6bBoufEEHqCRPnN/b2gyNuzZ3AvAllz/ex+ObFoAFALSvXOmhp36Bl97Jd5dffZyFKz89SbXLJ49vuPzxNt0ASPtw1yxs6eOJgUdbliHw6T+KreG3HoG/l+gJhFeet8XmisDlU2IfxsIPajtyZmJOeXVsYD/PpgGPPELy4Z4T0hRLIRdANOQ8BgCf1BUAy4M9ASmsC0BxBmIp1Os9bybijEC+hdDLOT49fJmIF6BiBuJzpFopvkzECbD1/qdat7Ss48lETIDw6499uJHOvUsMm0wC7LX/V3CUgpZchUxGrugXa05g6bOYDR95Pv/jPRo0E+CCZ89vGON7UzgxerA9X/Kvzi8p1VjtYQEUNkVNn0FAM6+NLm7eLVW2wgQoH+CJmkLTVd6VlpvgAWDpYw36VIARj71PqFDA6gkgI/mwL5xULWh0gCN2jyAIo+U7W1cAWR70XUyqFjQqwPmjjiBsttDFEDwAWuYEqj4MJ73jCdXWmgpw7mhrBCH0fDUR0DInMADGvOMJj1qiYESgdQrQ1grMEwEtcwIdAF/yjt9UnQ0YEXBICEFXtRE4cjw/6Fw8naZOajUDqJRCWWmvAEvOwMg3GeVf3wsm6qzMiigtldI/obJL3IJzLIMFOT3qANF1PwDkorW5mk+IrNEJYNU7lrBWd4g9DjdgIDm4BII3AryNG0Xfqoxkd9WFjDgw6rFa07mHPEaT8GYuhzswgLGWAAggazCg+WxGPmc23A0Phleo1+3MXqjSLpIhP2UB8ffF20NYxjaMcXs2J+8mstlsbncmhyvqFRBgi9l4m8jJGKcsJuNVjCHV9njzBw0bIGn9bYDoqQqA99Ooh9wOQD12mWZj20fgX8HKhU/uzOZ4AAAAAElFTkSuQmCC"
+							width="48" height="48" />
+					</div>
+					<div class="w3-right">
+						<h3 th:text="${session.PokeClean.inventories.itemBag.itemsCount}">50</h3>
+					</div>
+					<div class="w3-center">
+						<h4>Items</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="w3-container w3-padding-16">
+			<table id="example" class="w3-table w3-striped w3-border display"
+				cellspacing="0" width="100%">
+				<thead>
+					<tr class="w3-orange">
+						<th>Item</th>
+						<th>Count</th>
+						<th class="nosort"></th>
+					</tr>
+				</thead>
+				<tr valign="middle" th:each="item : ${session.PokeClean.Inventories.ItemBag.Items}">				
+					<td style="vertical-align: middle;" th:text="${item.ItemId.ValueDescriptor.Name}">Pokeball</td>		
+					<td style="vertical-align: middle;" th:text="${item.Count}">5</td>
+					<td style="vertical-align: middle;"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+

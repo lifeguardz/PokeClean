@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org"
+	layout:decorator="pogoclean/layouts/applicationnonav">
+<head>
+<title>PokeClean - CLEAN UP YOUR POK&Eacute;MONS</title>
+</head>
+<body>
+	<div layout:fragment="contentnonav">
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px"></header>
+		<div class="w3-row-padding w3-margin-bottom">
+			<div th:if="${success}" th:text="${success}" class="w3-container w3-green w3-round"></div>
+			<div th:if="${error}" th:text="${error}" class="w3-container w3-red w3-round"></div>
+			<br/>
+			<h3><i>Feel free to contact us!</i></h3>
+			<p><a href="mailto:obs-production@opentrash.com">obs-production@opentrash.com</a></p>
+			<br/>
+	</div>
+</div>
+</body>
+</html>
+

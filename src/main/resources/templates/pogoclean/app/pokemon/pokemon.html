@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org"
+	layout:decorator="pogoclean/layouts/application">
+<title>PokeClean - CLEAN UP YOUR POK&Eacute;MONS</title>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px"></header>
+		<div class="w3-row-padding w3-margin-bottom">
+		<div th:if="${success}" th:text="${success}" class="w3-container w3-green w3-round"></div>
+		<div th:if="${error}" th:text="${error}" class="w3-container w3-red w3-round"></div>
+		<div class="w3-center">
+		<h2><img th:src="'https://pokeapi.co/media/sprites/pokemon/' + ${poke.pokemonId.number} + '.png'" style="width: 10%; vertical-align: middle;" class="w3-circle" /> <span th:text="${poke.pokemonId}"> Pok&eacute;mon </span> <img th:src="'https://pokeapi.co/media/sprites/pokemon/' + ${poke.pokemonId.number} + '.png'" style="width: 10%; vertical-align: middle;" class="w3-circle" /></h2>
+		</div>	
+			
+			<table id="example" class="w3-table w3-striped w3-border display"
+				cellspacing="0" width="100%">
+				<thead>
+					<tr class="w3-orange">
+						<th>CP</th>
+						<th>Weight (kg)</th>
+						<th>Height (m)</th>
+						<th>Iv Score (%)</th>
+						<th>Favorite</th>
+						<th class="nosort">transfer</th>
+					</tr>
+				</thead>
+				<tr valign="middle" th:each="pokemon : ${sortedList.pokemonList}">
+					<td style="vertical-align: middle;" th:text="${pokemon.cp}">56</td>
+					<td style="vertical-align: middle;" th:text="${pokemon.weightKg}">6.4</td>
+					<td style="vertical-align: middle;" th:text="${pokemon.heightM}">0.45</td>
+					<td style="vertical-align: middle;" th:text="${pokemon.IvRatio * 100}">0.45</td>
+					<td style="vertical-align: middle;" th:text="${pokemon.favorite}">true</td>
+					<td style="vertical-align: middle;"><a th:href="@{/app/pokemon/{id}/{longId}/transfer (id=${pokemon.pokemonId.number}, longId=${pokemon.Id})}"><i class="fa fa-recycle"></i></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+

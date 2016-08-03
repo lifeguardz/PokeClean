@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org"
+	layout:decorator="pogoclean/layouts/applicationnonav">
+<head>
+<title>PokeClean - CLEAN UP YOUR POK&Eacute;MONS</title>
+</head>
+<body>
+	<div layout:fragment="contentnonav">
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px"></header>
+		<div class="w3-row-padding w3-margin-bottom">
+			<div th:if="${success}" th:text="${success}" class="w3-container w3-green w3-round"></div>
+			<div th:if="${error}" th:text="${error}" class="w3-container w3-red w3-round"></div>
+			<h2>FAQ</h2>
+			<h4><i>What is PokeClean?</i></h4>
+			<p>PokeClean is a tool that allows you not only to select more than one pok&eacute;mon to send to the professor, but also lets you clean up your items very easily.</p>
+			<h4><i>Do you have access to my login data?</i></h4>
+			<p>- Google Account: The application uses Google Oauth to get a token. I don't have any chance to access your email address or the password for your Google account.
+			<br/>- Pok&eacute;mon Trainer Club: Yes I could ... unfortunately. But I don't. I wish I could prove it to you. But that's the sad truth about the PTC login. Feel free to contact me if you wish to have a look at my source code.</p>
+			<h4><i>Which data do you store?</i></h4>
+			<p>Nothing. To be honest, the application has no database or something to store your data. Your data is temporarily stored in a server-side session. Once you have done no interaction for a long time or you're logged out you will destroy the session.</p>
+			<h4><i>Can my account be banned from the use of this application?</i></h4>
+			<p>As with all tools, it is unclear whether the use of such tools is prohibited. In my opinion, my tool is in a gray area of the Terms of Service of Niantic Inc. To be honest, I don't know it either. With my test account I had no problems. If you are afraid to be banned, then don't use your main account. In the upcoming weeks we will probably know more about what is prohibited and what is not.</p>
+			<h4><i>Why is the project not open source?</i></h4>
+			<p>Next month, I will finish my apprenticeship as a computer application developer. I have created this application mainly for me to improve my knowledge in Java Spring. That is the reason why I want to create the application mainly alone. Feel free to contact me if you wish to have a look at my source code.</p>
+			<h4><i>This site contains advertising. Why?</i></h4>
+			<p>Because I want to cover the running costs (such as domain and server costs).</p>
+			<h4><i>Do you have more questions?</i></h4>
+			<p><a th:href="@{/contact}"><b>Contact us</b></a>!</p>
+		</div>
+	</div>
+</body>
+</html>
+
