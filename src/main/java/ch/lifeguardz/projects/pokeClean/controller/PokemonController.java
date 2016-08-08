@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.lifeguardz.projects.pokeClean.entities.PokeClean;
 import ch.lifeguardz.projects.pokeClean.entities.SortedPokemon;
+import ch.lifeguardz.projects.pokeClean.forms.TransferForm;
 import ch.lifeguardz.projects.pokeClean.services.LoginService;
 import ch.lifeguardz.projects.pokeClean.services.PokemonService;
 
@@ -49,6 +51,37 @@ public class PokemonController {
 		model.addAttribute("poke", pokemonService.getSortedPokemonById(id, pokeClean).getPokemon());
 		model.addAttribute("sortedList", pokemonService.getSortedPokemonById(id, pokeClean));
 		return "pogoclean/app/pokemon/pokemon";
+	}
+	
+	@RequestMapping(value = {"/app/pokemon/{id}", "/PokeClean/app/pokemon/{id}"}, method = RequestMethod.POST)
+	public String transfer(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes, @PathVariable int id, @ModelAttribute("transferForm") TransferForm transferForm) {
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("PokeClean") == null) {
+			return "redirect:/app/pokemon/" + id;
+		}
+		PokeClean pokeClean = (PokeClean) session.getAttribute("PokeClean");
+		
+		if(pokemonService.tranferOnePokemon(transferForm.getLongIdList(), pokeClean)) {
+			redirectAttributes.addFlashAttribute("success", "Pokemon transfered.");
+		} else {
+			redirectAttributes.addFlashAttribute("error", "Something went wrong.");
+		}
+		
+		pokeClean = loginService.refreshPokeClean(pokeClean);
+		boolean hasPokemon = false;
+		for (SortedPokemon sortedPokemon : pokeClean.getSortedPokemonList()) {
+			if (sortedPokemon.getPokemon().getPokemonId().getNumber() == id){
+				hasPokemon = true;
+			}
+		}
+		
+		session.setAttribute("PokeClean", pokeClean);
+		if (hasPokemon) {
+			return "redirect:/PokeClean/app/pokemon/" + id;
+		}
+		
+		return "redirect:/PokeClean/app/pokemon";
 	}
 	
 	@RequestMapping(value = {"/app/pokemon/{id}/{longId}/transfer", "/PokeClean/app/pokemon/{id}/{longId}/transfer"}, method = RequestMethod.GET)

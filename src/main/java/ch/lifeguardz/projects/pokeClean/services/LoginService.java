@@ -23,7 +23,7 @@ public class LoginService {
 	public PokeClean refreshPokeClean(PokeClean pokeClean) {
 		OkHttpClient okHttpClient = new OkHttpClient();
 		try {
-		if (pokeClean.getLogin().isPtcLogin()) {
+			if (pokeClean.getLogin().isPtcLogin()) {
 				String username = pokeClean.getLogin().getPtcLogin().getUsername();
 				String password = pokeClean.getLogin().getPtcLogin().getPassword();
 				PokemonGo go = new PokemonGo(new PtcCredentialProvider(okHttpClient, username, password), okHttpClient);

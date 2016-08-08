@@ -15,9 +15,8 @@
 		<div class="w3-center">
 		<h2><img th:src="'https://pokeapi.co/media/sprites/pokemon/' + ${poke.pokemonId.number} + '.png'" style="width: 10%; vertical-align: middle;" class="w3-circle" /> <span th:text="${poke.pokemonId}"> Pok&eacute;mon </span> <img th:src="'https://pokeapi.co/media/sprites/pokemon/' + ${poke.pokemonId.number} + '.png'" style="width: 10%; vertical-align: middle;" class="w3-circle" /></h2>
 		</div>	
-			
-			<h3 class="w3-center">Select the Pokemon that you want to transfer.</h3>
-			
+		<h3 class="w3-center">Select the Pokemon that you want to transfer.</h3>
+			<br/>
 			<table id="example" class="table table-striped table-bordered"
 				cellspacing="0" width="100%">
 				<thead>
@@ -45,9 +44,11 @@
   	<div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
     <div class="w3-center">
       <br/>
-      <h3 lass="w3-margin-top">Are you sure you want to transfer all selected Pokemon?</h3>
+      <h3 class="w3-margin-top">Are you sure you want to transfer all selected Pokemon?</h3>
+      <p>This will take a while. Please wait until. Please wait until the website has been reloaded.</p>
+<!--       You will be notified when the process was completed. -->
     </div>
-    <form class="w3-container" action="form.asp">
+    <form class="w3-container" th:object="${transferForm}" name="transferForm" th:method="post">
       <div class="w3-section" id="poks">
         <!-- jquery -->
         <button class="w3-btn-block w3-green w3-section" type="submit">Yes</button>

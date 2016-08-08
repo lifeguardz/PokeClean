@@ -31,13 +31,13 @@ public class Login {
 	}
 
 	public boolean isGoogleLogin() {
-		if (googleLogin.getRefreshToken().isEmpty())
+		if (googleLogin == null)
 			return false;
 		return true;
 	}
 
 	public boolean isPtcLogin() {
-		if (ptcLogin.getUsername().isEmpty())
+		if (ptcLogin == null)
 			return false;
 		return true;
 	}

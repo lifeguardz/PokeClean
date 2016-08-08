@@ -34,14 +34,14 @@ public class LoginController {
 
 		HttpSession session = request.getSession();
 		if (session.getAttribute("PokeClean") != null) {
-			return "redirect:/app/home";
+			return "redirect:/app/pokemon";
 		}
 
 		return "pogoclean/app/login/login";
 	}
 
 	@RequestMapping(value = {"/", "/PokeClean"}, method = RequestMethod.POST)
-	public String loginf(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes, @ModelAttribute("loginForm") LoginForm loginForm) {
+	public String loging(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes, @ModelAttribute("loginForm") LoginForm loginForm) {
 
 		HttpSession session = request.getSession();
 		if (session.getAttribute("PokeClean") == null) {
@@ -65,7 +65,7 @@ public class LoginController {
 				return "redirect:/";
 			}			
 		} else {
-			return "redirect:/app/home";
+			return "redirect:/app/pokemon";
 		}
 		return "redirect:/";
 	}

@@ -15,6 +15,19 @@
     "pageLength": 10,
     "stateSave": true
   });
+  
+  var tableList = $('#list').DataTable({
+	    "aoColumnDefs" : [ {
+	      'bSortable' : false,
+	      'aTargets' : [ 'nosort' ]
+	    }, {
+	      'bSearchable' : false,
+	      'aTargets' : [ 'nosort' ]
+	    } ],
+	    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+	    "pageLength": 10,
+	    "stateSave": true
+	  });
 
   // table select rows
   $('#example tbody').on( 'click', 'tr', function () {
@@ -26,11 +39,7 @@
     $('.w3-khaki #nr').each(function(){
       idArray.push($(this).html().split('@')[0]);
     });
-
-    $.each(idArray, function(index, val) {
-      $('#poks').append('<input class="w3-input w3-border" disabled="disabled" style="display: none;" type="text" value="' + val + '" />');
-    });
-
+    $('#poks').append('<input type="text" style="display: none;" name="longIds" id="longIds" type="text" value="' + idArray + '" />');
     $('#btnNo').click( function () {
       idArray = [];
     });

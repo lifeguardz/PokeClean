@@ -2,6 +2,7 @@ package ch.lifeguardz.projects.pokeClean.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
@@ -48,6 +49,28 @@ public class PokemonService {
 	public boolean tranferOnePokemonById(Pokemon pokemon) {
 		try {
 			pokemon.transferPokemon();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean tranferOnePokemon(String[] longIdList, PokeClean pokeClean) {
+		Random rnd = new Random();
+		try {
+		for (String longId : longIdList) {
+			pokeClean
+			.getInventories()
+			.getPokebank()
+			.getPokemonById(
+					Long.valueOf(
+							longId
+							)
+					)
+			.transferPokemon();
+			Thread.sleep(300 + rnd.nextInt(2000 - 500 + 1));
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;

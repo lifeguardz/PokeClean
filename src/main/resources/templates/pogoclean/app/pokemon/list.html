@@ -31,10 +31,11 @@
 		</div>
 
 		<div class="w3-container w3-padding-16">
-			<table id="example" class="w3-table w3-striped w3-border display"
+			<table id="list" class="table table-striped table-bordered"
 				cellspacing="0" width="100%">
 				<thead>
-					<tr class="w3-orange">
+					<tr>
+						<th class="nosort"></th>
 						<th>Nr.</th>
 						<th>Pok&eacute;mon</th>
 						<th>Count</th>
@@ -42,12 +43,13 @@
 						<th class="nosort"></th>
 					</tr>
 				</thead>
-				<tr valign="middle" th:each="pokemon : ${session.PokeClean.sortedPokemonList}">				
+				<tr valign="middle" th:each="pokemon : ${session.PokeClean.sortedPokemonList}">
+					<td style="vertical-align: middle;" th:class="'pogo pokemon-' + ${pokemon.pokemon.pokemonId.number} + ' pogo-m'"></td>				
 					<td style="vertical-align: middle;" th:text="${pokemon.pokemon.pokemonId.number}">1</td>		
 					<td style="vertical-align: middle;" th:text="${pokemon.pokemon.pokemonId}">Bisasam</td>
 					<td style="vertical-align: middle;" th:text="${#lists.size(pokemon.pokemonList)}">5</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.pokemon.candy}">5</td>
-					<td style="vertical-align: middle;"><a th:href="@{/app/pokemon/{id} (id=${pokemon.pokemon.pokemonId.number})}"><i class="fa fa-search"></i></a></td>
+					<td style="vertical-align: middle; text-align: center;"><a th:href="@{/app/pokemon/{id} (id=${pokemon.pokemon.pokemonId.number})}"><i class="fa fa-search fa-2x"></i></a></td>
 				</tr>
 			</table>
 		</div>
