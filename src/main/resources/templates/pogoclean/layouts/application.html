@@ -13,8 +13,8 @@
 	href="https://fonts.googleapis.com/css?family=Raleway" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 <style>
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
@@ -78,7 +78,6 @@ html, body, h1, h2, h3, h4, h5 {
 			role="main"></div>
 
 		<br />
-		<div data-widget="plista_widget_standard_1"></div>
 
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-16 w3-grey">
@@ -95,50 +94,10 @@ html, body, h1, h2, h3, h4, h5 {
 	</div>
 	<!-- !PAGE CONTENT! -->
 
-	<script type="text/javascript" charset="utf8"
-		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" charset="utf8"
-		src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#example').DataTable({
-				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-				"pageLength": 50,
-				"pagingType": "full_numbers",
-				"aoColumnDefs" : [ {
-					'bSortable' : false,
-					'aTargets' : [ 'nosort' ]
-				}, {
-					'bSearchable' : false,
-					'aTargets' : [ 'nosort' ]
-				} ]
-			});
-		});
-	</script>
-	<script>
-		// Get the Sidenav
-		var mySidenav = document.getElementById("mySidenav");
-
-		// Get the DIV with overlay effect
-		var overlayBg = document.getElementById("myOverlay");
-
-		// Toggle between showing and hiding the sidenav, and add overlay effect
-		function w3_open() {
-			if (mySidenav.style.display === 'block') {
-				mySidenav.style.display = 'none';
-				overlayBg.style.display = "none";
-			} else {
-				mySidenav.style.display = 'block';
-				overlayBg.style.display = "block";
-			}
-		}
-
-		// Close the sidenav with the close button
-		function w3_close() {
-			mySidenav.style.display = "none";
-			overlayBg.style.display = "none";
-		}
-	</script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -148,34 +107,6 @@ html, body, h1, h2, h3, h4, h5 {
   ga('create', 'UA-41119278-7', 'auto');
   ga('send', 'pageview');
 
-</script>
-<script type="text/javascript">
-		if (!window.PLISTA) {
-			window.PLISTA = {
-				publickey : 'd924757c2292f4812eca6b9a',
-				item : {
-					objectid : '1137092b50', //unique ID, alphanumeric
-					title : 'Lorem ipsum', //max 255 characters
-					text : 'dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.', //max 255 characters
-					url : 'http://example.net/newsticker/artikel.html', //max 1024 characters
-					img : 'http://example.net/images/artImg_1137092b50.jpg', //max 255 characters
-					category : 'News',
-					created_at : 1400000000
-				//UNIX timestamp
-				},
-				categories : [ 'Sport', 'Auto', 'Unterhaltung' ]
-			//optional: additional categories
-			};
-			(function() {
-				var n = 'script', d = document, s = d.createElement(n), s0 = d
-						.getElementsByTagName(n)[0];
-				s.async = 'async';
-				s.type = 'text/javascript';
-				s.src = (d.location.protocol === 'https:' ? 'https:' : 'http:')
-						+ '//static.plista.com/async.js';
-				s0.parentNode.insertBefore(s, s0)
-			}());
-		}
 </script>
 </body>
 </html>
