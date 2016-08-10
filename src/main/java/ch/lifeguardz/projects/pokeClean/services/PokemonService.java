@@ -56,7 +56,7 @@ public class PokemonService {
 		return true;
 	}
 
-	public boolean tranferOnePokemon(String[] longIdList, PokeClean pokeClean) {
+	public boolean tranferPokemonByStringArray(String[] longIdList, PokeClean pokeClean) {
 		Random rnd = new Random();
 		try {
 		for (String longId : longIdList) {

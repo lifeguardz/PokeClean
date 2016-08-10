@@ -1,5 +1,9 @@
- // Pokémon Long Id Array
- var idArray = [];
+
+alertify.set('notifier', 'position', 'top-right');  
+
+// Pokémon Long Id Array
+var idArray = [];
+var pokemonId =$('#pokemonId').html();
 
  // jQuery DataTables
  $(document).ready(function() {
@@ -29,6 +33,7 @@
 	    "stateSave": true
 	  });
 
+
   // table select rows
   $('#example tbody').on( 'click', 'tr', function () {
     $(this).toggleClass('w3-khaki');
@@ -40,12 +45,39 @@
       idArray.push($(this).html().split('@')[0]);
     });
     $('#poks').append('<input type="text" style="display: none;" name="longIds" id="longIds" type="text" value="' + idArray + '" />');
-    $('#btnNo').click( function () {
-      idArray = [];
+    
+    $('#btnYes').click( function () {
+    	$('.w3-khaki #nr').each(function(){
+    		table.row(this).remove().draw(false);
+    	 });
+	 	var warnMsg = alertify.notify(
+	 			'Please wait <i class="fa fa-smile-o" aria-hidden="true"></i>', 0);
+	 	
+	 	$.ajax({
+			url : "transfer",
+			dataType: "json",
+			data: {'pokemonTransfer' : idArray.toString()},
+			timeout : 100000,
+			success : function(data) {
+				alertify.dismissAll();
+				var successMsg = alertify
+				.success(
+						'<div style="display: flex;"><div class="pogo pokemon-' + pokemonId  + '" ></div><p style="vertical-align: middle;"><b>Successful!</b></div>', 0);
+			},
+			error : function(e) {
+				alertify.dismissAll();
+				var errorMsg = alertify.error('<div style="display: flex;"><div class="pogo pokemon-' + pokemonId  + '" ></div><p style="vertical-align: middle;"><b>Error!</b><br/><p>Please refresh the site.<p/></div>', 0);
+			},
+			done : function(e) {
+			}
+		});
     });
-  });
+	 
+	 $('#btnNo').click( function () {
+	   idArray = [];
+	 });
+  }); 
 });
-
 
 // Get the Sidenav
 var mySidenav = document.getElementById("mySidenav");
