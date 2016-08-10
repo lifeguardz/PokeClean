@@ -22,21 +22,23 @@
 				cellspacing="0" width="100%">
 				<thead>
 					<tr>
+						<th>Nickname</th>
 						<th>CP</th>
 						<th>Weight (kg)</th>
 						<th>Height (m)</th>
 						<th>Iv Score (%)</th>
 						<th>Favorite</th>
-						<th class="nosort">Id</th>
+						<th class="nosort" style="display: none;">Id</th>
 					</tr>
 				</thead>
 				<tr valign="middle" th:each="pokemon : ${sortedList.pokemonList}">
+					<td style="vertical-align: middle;" th:text="${pokemon.Nickname}">Rudi</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.cp}">56</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.weightKg}">6.4</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.heightM}">0.45</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.IvRatio * 100}">0.45</td>
 					<td style="vertical-align: middle;" th:text="${pokemon.favorite}">true</td>
-					<td style="vertical-align: middle;" th:text="${pokemon.Id}" id="nr"></td>
+					<td style="vertical-align: middle; display: none;" th:text="${pokemon.Id}" id="nr"></td>
 				</tr>
 			</table>
 			<button id="transfer" onclick="document.getElementById('id01').style.display='block'" class="w3-btn-block w3-orange w3-middle w3-large">TRANSFER</button>			
