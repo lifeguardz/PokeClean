@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org"
+	layout:decorator="pogoclean/layouts/application">
+<title>PokeClean - CLEAN UP YOUR POK&Eacute;MONS</title>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px"></header>
+		<div class="w3-row-padding w3-margin-bottom">
+		<div th:if="${success}" th:text="${success}" class="w3-container w3-green w3-round"></div>
+		<div th:if="${error}" th:text="${error}" class="w3-container w3-red w3-round"></div>
+		<br />
+			<div class="w3">
+				<div class="w3-container w3-purple w3-padding-2">
+					<div class="w3-center">
+						<h4>Pok&eacute;mon Export</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="w3-container w3-padding-16">
+		<h3>Downloading the file may take a moment. Please be patient.</h3>
+			<div class="columns large-1">
+				<form th:method="post">
+					<button type="submit" class="w3-btn-block w3-green w3-middle w3-large">Download CSV</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

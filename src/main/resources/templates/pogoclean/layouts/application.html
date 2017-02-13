@@ -33,8 +33,7 @@ html, body, h1, h2, h3, h4, h5 {
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i> Menu
 		</button>
-		<a th:href="@{/app/home}"><span class="w3-right">PokeClean <span
-				class="w3-badge w3-red">BETA</span></span></a>
+		<a th:href="@{/app/home}"><span class="w3-right">PokeClean</span></a>
 	</div>
 
 	<!-- Sidenav/menu -->
@@ -61,7 +60,10 @@ html, body, h1, h2, h3, h4, h5 {
 				onclick="w3_close()" title="close menu"><i
 				class="fa fa-remove fa-fw"></i> Close Menu</a> <a
 				th:href="@{/app/pokemon}" class="w3-padding w3-green"><span
-				class="w3-badge" th:text="${#lists.size(session.PokeClean.inventories.pokebank.pokemons)}">50</span> <i>Pok&eacute;mon</i></a> <a
+				class="w3-badge" th:text="${#lists.size(session.PokeClean.inventories.pokebank.pokemons)}">50</span> <i>Pok&eacute;mon</i></a>
+				<a
+				th:href="@{/app/pokemon/export}" class="w3-padding w3-purple"><span
+				class="w3-badge"></span> <i>Pok&eacute;mon Export</i></a> <a
 				th:href="@{/app/items}" class="w3-padding w3-blue"><span
 				class="w3-badge" th:text="${session.PokeClean.inventories.itemBag.itemsCount}">52</span> <i>Items</i></a> <a th:href="@{/logout}"
 				class="w3-padding w3-black"><i class="fa fa-sign-out"></i> Sign
@@ -85,7 +87,7 @@ html, body, h1, h2, h3, h4, h5 {
 		<footer class="w3-container w3-padding-16 w3-grey">
 			<h4>PokeClean</h4>
 			<p>
-				&#169; 2016 by PokeClean. ALL RIGHTS RESERVED. <br /> 
+				&#169; 2017 by PokeClean. ALL RIGHTS RESERVED. <br /> 
 				<br /> Thanks to <a class="white-text"
 					href="https://github.com/Grover-c13/PokeGOAPI-Java" target="_blank">PokeGOAPI-Java</a>
 				&amp; <a class="white-text"
@@ -95,14 +97,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<a href="https://twitter.com/PokeClean" class="twitter-follow-button" data-show-count="false">Follow @PokeClean</a><script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			<br/>
 			<a href="https://www.reddit.com/r/pokemongodev/comments/4w0bsb/implementation_pokecleancom_clean_up_your_pok%C3%A9mon/"><i class="fa fa-reddit"></i> Give me some Feedback!</a>
-			<br/><br/>
-			<p>Any donation is necessary to run the server at a stable level.</p>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-			<input type="hidden" name="cmd" value="_s-xclick" />
-			<input type="hidden" name="hosted_button_id" value="F7V46SETDRHRY" />
-			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal." />
-			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
-			</form>
+			<br/>
 		</footer>
 	</div>
 	<!-- !PAGE CONTENT! -->
